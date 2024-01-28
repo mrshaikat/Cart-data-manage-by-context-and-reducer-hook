@@ -2,13 +2,15 @@ import { useContext } from "react";
 import { MovieContext } from "../context";
 
 export default function ShoppingCart({onClose}){
-  const {cartData, setCartData} = useContext(MovieContext);
+  const {state, dispatch} = useContext(MovieContext);
 
-  const handleCartDataRemove = (cartDataId) => {
-    const data = cartData.filter(cart => {
-      return cart.id !== cartDataId
-    })
-      setCartData([...data]);
+  const handleCartDataRemove = (id) => {
+    dispatch({
+      type: 'removeFromCart',
+      payload: {
+        id
+      }
+    });
 
   }
     return (
@@ -25,7 +27,7 @@ export default function ShoppingCart({onClose}){
             <div
               className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14"
             >
-            {cartData.length === 0 ? "Empty Cart !!" :  cartData.map((cart) =>   <div key={cart.id} className="grid grid-cols-[1fr_auto] gap-4">
+            {state.cartData.length === 0 ? "Empty Cart !!" :  state.cartData.map((cart) =>   <div key={cart.id} className="grid grid-cols-[1fr_auto] gap-4">
                 <div className="flex items-center gap-4">
                   <img
                     className="rounded overflow-hidden"

@@ -7,7 +7,7 @@ import Rating from "./Rating";
 export default function MovieCard({ movie }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const {cartData, setCartData} = useContext(MovieContext);
+  const {state, dispatch} = useContext(MovieContext);
 
   const handleModalClose = () => {
     setSelectedMovie(null);
@@ -21,12 +21,18 @@ export default function MovieCard({ movie }) {
 
   const handleAddToCart = (e,movie) =>{
     e.stopPropagation();
-    const found = cartData.find(item => {
+    const found = state.cartData.find(item => {
       return item.id === movie.id;
     })
 
     if(!found){
-      setCartData([...cartData, movie])
+      // setCartData([...state.cartData, movie])
+      dispatch({
+        type: "addToCart",
+        payload: {
+          ...movie
+        }
+      })
     }else{
       throw Error('The movie is added')
     }
