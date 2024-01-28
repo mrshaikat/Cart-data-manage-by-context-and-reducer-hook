@@ -9,7 +9,7 @@ export default function MovieDetailsModal({movie, onClose, onCartAdd}){
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto"
         >
           <div
-            className="bg-white shadow-md rounded-2xl sm:grid sm:grid-cols-[2fr_1fr] overflow-hidden"
+            className="bg-white dark:bg-black shadow-md rounded-2xl sm:grid sm:grid-cols-[2fr_1fr] overflow-hidden"
           >
             <img
               className="sm:order-2 w-full object-cover h-full max-sm:max-h-[300px]"
@@ -20,7 +20,7 @@ export default function MovieDetailsModal({movie, onClose, onCartAdd}){
               <div className="">
                 <h2 className="text-3xl lg:text-[50px] mb-2 font-bold">{movie.title}</h2>
                 <span
-                  className="block text-base text-[#9fa0a4] dark:text-[#575A6E] my-3">{movie.genre}</span>
+                  className="block text-base text-[#1b1c22] dark:text-[#575A6E] my-3">{movie.genre}</span>
                 <div></div>
               </div>
               <p className="text-sm lg:text-base mb-8 lg:mb-16">
