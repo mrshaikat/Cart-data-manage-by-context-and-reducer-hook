@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { MovieContext } from "../context";
 import { getImgUrl } from "../utils/cine-utility";
 import MovieDetailsModal from "./MovieDetailsModal";
@@ -32,10 +33,13 @@ export default function MovieCard({ movie }) {
         payload: {
           ...movie
         }
-      })
+      });
+      toast.success(`Movie ${movie.title} added Successfully`);
     }else{
-      throw Error('The movie is added')
+      toast.warning(`Movie ${movie.title} Already added Successfully`);
     }
+
+
   }
   return (
     <>
